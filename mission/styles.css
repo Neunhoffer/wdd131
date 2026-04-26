@@ -1,0 +1,43 @@
+body {
+    font-family: Georgia, serif;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+h3 {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #51a9f7;
+}
+
+#opening {
+    margin: 30px auto;
+    max-width: 700px;
+}
+
+#list {
+    max-width: 700px;
+    margin: 20px auto;
+    line-height: 2;
+}
+
+#list li {
+    margin-bottom: 15px;
+}
+
+#image {
+    text-align: center;
+    margin-top: 40px;
+}
+
+#image img {
+    width: 200px;
+}
