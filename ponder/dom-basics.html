@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #ddd;
+            font-size: 20px;
+        }
+        #content {
+            max-width: 60%;
+            margin: 40px auto;
+            border: 1px solid darkgrey;
+            padding: 50px;
+        }
+        p {
+            color: #035f9c;
+            font-size: 1.3em;
+        }
+        hr {
+            height: 3px;
+            background-color: #035f9c;
+            margin: 30px auto;
+            width: 80%;
+        }
+        h1, h2, p {
+            text-align: center;
+        }
+        img {
+            display: block;
+            margin: 0 auto;
+            width: 50%;
+        }
+        #topics {
+            width: 55%;
+            margin: 0 auto;
+            line-height: 1.5em;
+        }
+        .list {
+            list-style-type: none;
+        }
+           
+    </style>
+
+</head>
+<body>
+    
+<div id="content">
+    <h1>HTML, CSS, and JS</h1>
+    
+    <p>The foundational technologies that power websites and web applications</p>
+    <hr>
+    <img src="https://wddbyui.github.io/wdd131/images/trifecta.png" alt="JS, CSS, and HTML logos">
+    <div id="topics">
+        <h2>HyperText Markup Language</h2>
+        <ul class="list">
+            <li>Defines the structure and content of a web page.</li>
+            <li>Without HTML there's nothing for the browser to display.</li>
+        </ul>
+        <h2>Cascading Style Sheets</h2>
+        <ul class="list">
+            <li>Controls how the HTML elements look.</li>
+            <li>Without CSS pages look plain and unstyled.</li>
+        </ul>
+        <h2>JavaScript</h2>
+        <ul class="list">
+            <li>Adds interactivity and dynamic behavior.</li>
+            <li>Without JavaScript nothing on the page responds dynamically to user actions.</li>
+        </ul>
+    </div>
+</div>
+          
+    <script>
+        // Access HTML in 35, use the document object
+        // querySelector uses CSS selectors to find HTML elements 
+        let firstList = document.querySelector(".list");
+        firstList.style.backgroundColor = "red";
+        
+        let content = document.getElementById("content");
+        content.style.backgroundColor = "red";
+
+        document.querySelector("img").setAttribute("src", "potrait.webp");
+        document.querySelector("img").setAttribute("alt", "new alt tag");
+
+        document.querySelector("h1").textContent = "MONSTER TRUCKS!!!";
+        document.getElementsByTagName("h1")[0].textContent = "MONESTER TRUCKS!!!";
+
+        console.log(document.getElementById("content"));
+    </script>
+</body>
+</html>
