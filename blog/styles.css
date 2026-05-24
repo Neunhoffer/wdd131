@@ -1,0 +1,125 @@
+/* Base / reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Georgia, serif;
+  color: #222;
+  background: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Header ── */
+header {
+  text-align: center;
+  padding: 1rem 1.5rem 0;
+  border-bottom: 3px solid #f5d800;
+}
+
+header h1 {
+  font-size: 1.6rem;
+  color: #4b0082;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #f5d800;
+  margin-bottom: 0.75rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  padding-bottom: 0.75rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: #c00040;
+  font-size: 0.95rem;
+}
+
+nav a:hover,
+nav a:focus {
+  text-decoration: underline;
+}
+
+/* ── Main / article ── */
+main {
+  flex: 1;
+  padding: 1.5rem;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Mobile: single column, meta on right via text-align */
+.book-review {
+  display: grid;
+  grid-template-columns: 1fr;
+  border: 1px solid #e0e0e0;
+  padding: 1rem;
+}
+
+.book-meta {
+  text-align: right;
+  font-style: italic;
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.book-meta .rating {
+  color: #f5d800;
+  font-style: normal;
+  font-size: 1.2rem;
+}
+
+.book-title {
+  color: #c00040;
+  font-size: 1.15rem;
+  margin-bottom: 0.75rem;
+}
+
+.book-cover {
+  display: block;
+  max-width: 160px;
+  height: auto;
+  margin-bottom: 0.75rem;
+}
+
+.book-description {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* ── Footer ── */
+footer {
+  text-align: center;
+  padding: 1rem;
+  border-top: 2px solid #f5d800;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* ── Larger devices (≥ 640px): two-column layout ── */
+@media (min-width: 640px) {
+  .book-review {
+    grid-template-columns: 160px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  .book-meta {
+    text-align: left;
+    margin-bottom: 0;
+  }
+
+  .book-cover {
+    max-width: 200px;
+  }
+}
