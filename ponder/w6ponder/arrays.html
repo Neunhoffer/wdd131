@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>W6 Ponder - Array Methods</title>
+  <style>
+    table { border-collapse: collapse; margin-top: 1rem; }
+    td { border-bottom: 1px solid #ccc; padding: 0.4rem 3rem; text-align: center; }
+  </style>
+</head>
+<body>
+  <ul id="word-list"></ul>
+  <table id="student-table"></table>
+
+  <script>
+    function convert(grade) {
+      let points;
+      switch (grade) {
+        case 'A': points = 4; break;
+        case 'B': points = 3; break;
+        case 'C': points = 2; break;
+        case 'D': points = 1; break;
+        case 'F': points = 0; break;
+        default: alert('not a valid grade');
+      }
+      return points;
+    }
+
+    const words = ['watermelon', 'peach', 'apple', 'tomato', 'grape'];
+
+    const students = [
+      {last: 'Andrus', first: 'Aaron'},
+      {last: 'Masa',   first: 'Manny'},
+      {last: 'Tanda',  first: 'Tamanda'}
+    ];
+
+    // forEach: log each word and render bullet list
+    const simpleWords = ['one', 'two', 'three'];
+    simpleWords.forEach(word => {
+      console.log(word);
+      const li = document.createElement('li');
+      li.textContent = word;
+      document.getElementById('word-list').appendChild(li);
+    });
+
+    // filter: words with exactly 5 characters → ['peach', 'apple', 'grape']
+    const fiveLetterWords = words.filter(word => word.length === 5);
+    console.log(fiveLetterWords);
+
+    // reduce: sum grade points for ['A', 'C', 'D'] → 4+2+1 = 7
+    const gradeList = ['A', 'C', 'D'];
+    const totalPoints = gradeList.reduce((sum, grade) => sum + convert(grade), 0);
+    console.log(totalPoints);
+
+    // average GPA → 7/3 = 2.3333...
+    const gpa = totalPoints / gradeList.length;
+    console.log(gpa);
+
+    // map: build full name strings from students array
+    const fullNames = students.map(student => `${student.first} ${student.last}`);
+    console.log(fullNames);
+
+    // findIndex: index of student with last name 'Tanda' → 2
+    const foundIndex = students.findIndex(student => student.last === 'Tanda');
+    console.log(foundIndex);
+
+    // render students table
+    const table = document.getElementById('student-table');
+    students.forEach(student => {
+      const row = document.createElement('tr');
+      const cell = document.createElement('td');
+      cell.textContent = `${student.first} ${student.last}`;
+      row.appendChild(cell);
+      table.appendChild(row);
+    });
+  </script>
+</body>
+</html>
