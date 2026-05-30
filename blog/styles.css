@@ -61,8 +61,8 @@ main {
 .book-review {
   display: grid;
   grid-template-columns: 1fr;
-  border: 1px solid #e0e0e0;
-  padding: 1rem;
+  padding: 1rem 0;
+  margin-bottom: 1.5rem;
 }
 
 .book-meta {
@@ -79,6 +79,11 @@ main {
   font-size: 1.2rem;
 }
 
+.book-content {
+  border-left: 4px solid #f5d800;
+  padding-left: 1rem;
+}
+
 .book-title {
   color: #c00040;
   font-size: 1.15rem;
@@ -87,9 +92,9 @@ main {
 
 .book-cover {
   display: block;
-  max-width: 160px;
+  max-width: 200px;
   height: auto;
-  margin-bottom: 0.75rem;
+  margin: 0 auto 0.75rem;
 }
 
 .book-description {
