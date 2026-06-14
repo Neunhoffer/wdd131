@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Character Card</title>
+
+  <!-- Social Media Meta -->
+  <meta name="description" content="Meet Snortleblat, the Swamp Beast Diplomat. View character stats and interact with this unique RPG character card.">
+  <meta property="og:title" content="Character Card - Snortleblat">
+  <meta property="og:description" content="Meet Snortleblat, the Swamp Beast Diplomat. Level 8 adventurer.">
+  <meta property="og:image" content="snortleblat.pdf">
+  <meta property="og:url" content="https://ethanneunhoffer.github.io/wdd131/W08prove/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Character Card - Snortleblat">
+  <meta name="twitter:description" content="Meet Snortleblat, the Swamp Beast Diplomat. Level 8 adventurer.">
+  <meta name="twitter:image" content="snortleblat.pdf">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <div class="card">
+      <embed id="characterImg" src="snortleblat.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" aria-label="Snortleblat - Swamp Beast Diplomat">
+      <div class="name-banner">
+        <h1 id="characterName"></h1>
+      </div>
+      <div class="stats">
+        <p><strong>Class:</strong> <span id="characterClass"></span></p>
+        <p><strong>Level:</strong> <span id="characterLevel"></span></p>
+        <p><strong>Health:</strong> <span id="characterHealth"></span></p>
+      </div>
+      <div class="buttons">
+        <button id="attackedBtn">Attacked</button>
+        <button id="levelUpBtn">Level Up</button>
+      </div>
+    </div>
+  </main>
+  <script src="main.js"></script>
+</body>
+</html>
