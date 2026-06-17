@@ -1,0 +1,87 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 20px;
+  max-width: 1280px;
+  margin: auto;
+  padding: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* Mobile: header stacks column so nav sits below h1, right side */
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+header h1 {
+  align-self: flex-start;
+}
+
+/* Mobile: nav links in a horizontal row, left-aligned */
+.main-nav {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  padding: 0;
+  margin: 0;
+}
+
+hr {
+  margin-top: 50px;
+}
+
+/* Mobile: media card image stacks on top, text below */
+.media-card {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Mobile: gallery cards stack one per row */
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+/* Larger device */
+@media (min-width: 900px) {
+  /* h1 on left, nav on right */
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* image on left, text on right */
+  .media-card {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1em;
+  }
+
+  .media-card-image {
+    flex: 0 0 40%;
+  }
+
+  .media-card-content {
+    flex: 1;
+  }
+
+  /* 2 cards per row */
+  .gallery {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .gallery .media-card {
+    flex: 1 1 calc(50% - 0.5em);
+  }
+}
