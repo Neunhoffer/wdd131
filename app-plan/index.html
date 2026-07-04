@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StitchCraft Project Plan</title>
+  <link rel="stylesheet" href="styles/site-plan.css">
+</head>
+<body>
+
+  <header>
+    <h1>StitchCraft Project Plan</h1>
+    <h2>Ethan Neunhoffer</h2>
+    <h2>WDD 131</h2>
+  </header>
+
+  <nav>
+    <a href="#overview">Overview</a>
+    <a href="#branding">Branding</a>
+    <a href="#style-guide">Style Guide</a>
+    <a href="#pseudocode">Pseudocode</a>
+    <a href="#wireframes">Wireframes</a>
+  </nav>
+
+  <hr>
+
+  <h2 id="overview">Overview</h2>
+
+  <h3>Purpose</h3>
+  <p>
+    StitchCraft is an online store for a small family business that sells nursing
+    scrubs and custom embroidered jackets. Right now my parents take orders mostly
+    by word of mouth, so the goal of the site is to give them an actual storefront.
+    Customers can browse what's available, filter by what they're looking for, and
+    add items to a cart instead of having to message someone to place an order.
+  </p>
+
+  <h3>Audience</h3>
+  <p>
+    The main audience is nurses and other healthcare workers who need scrubs that
+    are comfortable and hold up to long shifts. The second group is people who
+    want a custom jacket, whether that's for a clinic team, a club, or just a gift.
+    A lot of these people are going to be on their phone when they find the site,
+    so it has to work well on mobile and not be a pain to get through.
+  </p>
+
+  <h3>Dynamic elements</h3>
+  <p>
+    Most of the interactive stuff on the site runs on JavaScript. Instead of
+    hard coding every product into the HTML, I'm keeping all the products in an
+    array inside a <code>data.js</code> file and looping over that array to build
+    the product grid. That way when my parents add a new product later, they only
+    have to update one file.
+  </p>
+  <p>
+    The filter buttons (All, Scrubs, Jackets) and a sort by price option just
+    rebuild the grid from that same array whenever you click them. Each product
+    has an "Add to cart" button that pushes the item into a cart array and updates
+    the item count and total up in the header. I'm saving the cart to
+    <code>localStorage</code> so it doesn't get wiped if you leave and come back.
+    There's also a hamburger menu for smaller screens, and the contact form checks
+    that the fields aren't empty before it shows a confirmation message.
+  </p>
+
+  <hr>
+
+  <h2 id="branding">Branding</h2>
+
+  <h3>Website Logo</h3>
+  <p>
+    The logo is just the <strong>StitchCraft</strong> name in the heading font
+    with a small needle and thread icon next to it. I haven't made the final
+    version yet, so the image below is a placeholder for now.
+  </p>
+  <img src="wireframe-home.svg" alt="StitchCraft logo and landing layout placeholder" width="400">
+
+  <hr>
+
+  <h2 id="style-guide">Style Guide</h2>
+
+  <h3>Color Palette</h3>
+  <p>
+    Palette URL:
+    <a href="https://coolors.co/2f4b4e-d8c3a5-b5651d-ffffff">
+      https://coolors.co/2f4b4e-d8c3a5-b5651d-ffffff
+    </a>
+  </p>
+
+  <table class="colors">
+    <tr>
+      <th>Primary</th>
+      <th>Secondary</th>
+      <th>Accent 1</th>
+      <th>Accent 2</th>
+    </tr>
+    <tr>
+      <td class="primary"></td>
+      <td class="secondary"></td>
+      <td class="accent1"></td>
+      <td class="accent2"></td>
+    </tr>
+    <tr>
+      <td>#2F4B4E</td>
+      <td>#D8C3A5</td>
+      <td>#B5651D</td>
+      <td>#FFFFFF</td>
+    </tr>
+  </table>
+
+  <h3>Typography</h3>
+  <p>
+    Headings use <strong>Fraunces</strong>, which is a serif that fits the
+    handmade feel of custom clothing. Body text uses <strong>Inter</strong> since
+    it stays easy to read at small sizes, which matters because most people will
+    be on their phone.
+  </p>
+
+  <hr>
+
+  <h2 id="pseudocode">Pseudocode &mdash; Computational Thinking</h2>
+
+  <h3>Loading and displaying products</h3>
+  <p class="colored">
+    IMPORT products array from data.js<br>
+    SELECT the grid container element from the DOM<br>
+    <br>
+    FUNCTION renderProducts(list):<br>
+    &nbsp;&nbsp;SET grid.innerHTML to empty string<br>
+    &nbsp;&nbsp;FOR EACH product IN list:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;BUILD a card with image, name, price, and an "Add to cart" button<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;APPEND the card to the grid<br>
+    &nbsp;&nbsp;END FOR<br>
+    END FUNCTION<br>
+    <br>
+    CALL renderProducts(products) once on page load
+  </p>
+
+  <h3>Filtering and sorting</h3>
+  <p class="colored">
+    FOR EACH filter button:<br>
+    &nbsp;&nbsp;ON click:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;READ the category from the button's data attribute<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;IF category is "all":<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SET filtered = products<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;ELSE:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SET filtered = products where product.category equals category<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;IF sort is active: SORT filtered by price<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;CALL renderProducts(filtered)<br>
+    &nbsp;&nbsp;END ON click<br>
+    END FOR
+  </p>
+
+  <h3>Cart logic</h3>
+  <p class="colored">
+    LOAD cart array from localStorage, OR start with an empty array<br>
+    <br>
+    FUNCTION addToCart(productId):<br>
+    &nbsp;&nbsp;FIND product by id<br>
+    &nbsp;&nbsp;IF product already in cart: increase its quantity by 1<br>
+    &nbsp;&nbsp;ELSE: push product into cart with quantity 1<br>
+    &nbsp;&nbsp;SAVE cart to localStorage<br>
+    &nbsp;&nbsp;UPDATE cart count and total in the header<br>
+    END FUNCTION
+  </p>
+
+  <h3>Contact form validation</h3>
+  <p class="colored">
+    ON form submit:<br>
+    &nbsp;&nbsp;PREVENT default page reload<br>
+    &nbsp;&nbsp;IF name is empty OR email is invalid:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;SHOW an error message next to the field<br>
+    &nbsp;&nbsp;ELSE:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;CLEAR the form and SHOW a confirmation message<br>
+    END ON submit
+  </p>
+
+  <hr>
+
+  <h2 id="wireframes">Wireframes</h2>
+  <p>
+    I'm planning two pages for now, a home page and a products page. There's a
+    wireframe for each one below.
+  </p>
+
+  <h3>Landing page</h3>
+  <p>
+    The home page has the header and nav at the top, then a hero image with a
+    headline and a "Shop Now" button. Under that is a small row of featured
+    products that comes from the data array, and then a footer with contact info
+    and social links.
+  </p>
+  <img src="wireframe-home.svg" alt="Wireframe of the StitchCraft landing page" width="700">
+
+  <h3>Products page</h3>
+  <p>
+    The products page uses the same header and nav. Below that is a bar with the
+    filter buttons and the price sort, and then the product grid that JavaScript
+    builds from the array. Every card has an image, the name, the price, and an
+    "Add to cart" button.
+  </p>
+  <img src="wireframe-products.svg" alt="Wireframe of the StitchCraft products page" width="700">
+
+  <hr>
+
+  <h2>Site Map</h2>
+  <div class="sitemap">
+    <div class="sm-home">Home</div>
+    <div class="top"></div>
+    <div class="left"></div>
+    <div class="right"></div>
+    <div class="sm-page2">Products</div>
+    <div class="sm-page3">Contact</div>
+  </div>
+
+</body>
+</html>
