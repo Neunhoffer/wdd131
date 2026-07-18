@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact – EC Vibes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="js/app.js"></script>
+  <script defer src="js/contact.js"></script>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">EC <span>Vibes</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="cart.html" class="cart-link">Cart <span id="cart-count">0</span></a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="contact-page">
+    <h1>Get in Touch</h1>
+    <p class="sub">Questions about sizing, orders, or just want to say hi? We'd love to hear from you.</p>
+
+    <form id="contact-form" novalidate>
+      <div class="form-group" id="group-name">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" placeholder="Jane Doe">
+        <span class="field-error">Please enter your name.</span>
+      </div>
+
+      <div class="form-group" id="group-email">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="jane@email.com">
+        <span class="field-error">Please enter a valid email address.</span>
+      </div>
+
+      <div class="form-group" id="group-subject">
+        <label for="subject">Subject</label>
+        <select id="subject">
+          <option value="">Select a topic...</option>
+          <option value="order">Order Question</option>
+          <option value="sizing">Sizing Help</option>
+          <option value="wholesale">Wholesale Inquiry</option>
+          <option value="other">Other</option>
+        </select>
+        <span class="field-error">Please select a subject.</span>
+      </div>
+
+      <div class="form-group" id="group-message">
+        <label for="message">Message</label>
+        <textarea id="message" placeholder="Tell us what's on your mind..."></textarea>
+        <span class="field-error">Please enter a message.</span>
+      </div>
+
+      <button type="submit" class="btn" style="width:100%;">Send Message</button>
+      <div class="form-success" id="form-success">
+        &#10003; Message sent! We'll get back to you within 1–2 business days.
+      </div>
+    </form>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 <span>EC Vibes</span>. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

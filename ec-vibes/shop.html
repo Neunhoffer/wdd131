@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop – EC Vibes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="js/app.js"></script>
+  <script defer src="js/shop.js"></script>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">EC <span>Vibes</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html" class="active">Shop</a></li>
+      <li><a href="cart.html" class="cart-link">Cart <span id="cart-count">0</span></a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="shop-header">
+    <h1>All Scrubs</h1>
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="tops">Tops</button>
+      <button class="filter-btn" data-filter="bottoms">Bottoms</button>
+      <button class="filter-btn" data-filter="sets">Sets</button>
+    </div>
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="Search scrubs...">
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="product-grid" id="product-grid"></div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 <span>EC Vibes</span>. All rights reserved.</p>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+</body>
+</html>
