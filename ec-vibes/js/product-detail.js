@@ -19,7 +19,7 @@ fetch('./data/products.json')
     container.innerHTML = `
       <div class="product-detail">
         <div class="detail-img">
-          <img src="${product.image}" alt="${product.name}">
+          <img src="${product.image}" alt="${product.name}" width="800" height="600">
           <span class="color-chip" style="background-color:${product.colorHex}">${product.color}</span>
         </div>
         <div class="detail-info">

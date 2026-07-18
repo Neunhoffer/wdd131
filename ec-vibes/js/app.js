@@ -65,7 +65,7 @@ function cardTemplate(product) {
   return `
     <div class="product-card" data-id="${product.id}">
       <div class="card-img">
-        <img src="${product.image}" alt="${product.name}">
+        <img src="${product.image}" alt="${product.name}" width="400" height="300">
         <span class="color-chip" style="background-color:${product.colorHex}">${product.color}</span>
       </div>
       <div class="card-body">
