@@ -1,23 +1,56 @@
 const form = document.getElementById('contact-form');
 const success = document.getElementById('form-success');
 
-function validateField(inputId, groupId, checkFn) {
-  const value = document.getElementById(inputId).value.trim();
-  const group = document.getElementById(groupId);
-  const valid = checkFn(value);
-  group.classList.toggle('error', !valid);
-  return valid;
-}
+const nameInput = document.getElementById('name');
+const emailInput = document.getElementById('email');
+const subjectInput = document.getElementById('subject');
+const messageInput = document.getElementById('message');
+
+const nameGroup = document.getElementById('group-name');
+const emailGroup = document.getElementById('group-email');
+const subjectGroup = document.getElementById('group-subject');
+const messageGroup = document.getElementById('group-message');
+
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 form.addEventListener('submit', e => {
   e.preventDefault();
 
-  const nameOk    = validateField('name',    'group-name',    v => v.length >= 2);
-  const emailOk   = validateField('email',   'group-email',   v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v));
-  const subjectOk = validateField('subject', 'group-subject', v => v !== '');
-  const messageOk = validateField('message', 'group-message', v => v.length >= 10);
+  let formIsValid = true;
 
-  if (nameOk && emailOk && subjectOk && messageOk) {
+  const nameValue = nameInput.value.trim();
+  if (nameValue.length < 2) {
+    nameGroup.classList.add('error');
+    formIsValid = false;
+  } else {
+    nameGroup.classList.remove('error');
+  }
+
+  const emailValue = emailInput.value.trim();
+  if (!emailPattern.test(emailValue)) {
+    emailGroup.classList.add('error');
+    formIsValid = false;
+  } else {
+    emailGroup.classList.remove('error');
+  }
+
+  const subjectValue = subjectInput.value.trim();
+  if (subjectValue === '') {
+    subjectGroup.classList.add('error');
+    formIsValid = false;
+  } else {
+    subjectGroup.classList.remove('error');
+  }
+
+  const messageValue = messageInput.value.trim();
+  if (messageValue.length < 10) {
+    messageGroup.classList.add('error');
+    formIsValid = false;
+  } else {
+    messageGroup.classList.remove('error');
+  }
+
+  if (formIsValid) {
     form.reset();
     success.style.display = 'block';
     setTimeout(() => { success.style.display = 'none'; }, 5000);

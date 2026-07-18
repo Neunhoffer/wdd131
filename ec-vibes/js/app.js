@@ -43,11 +43,20 @@ function updateQty(id, size, qty) {
 }
 
 function cartTotal() {
-  return getCart().reduce((sum, i) => sum + i.price * i.qty, 0);
+  const cart = getCart();
+  let total = 0;
+  for (let i = 0; i < cart.length; i++) {
+    total += cart[i].price * cart[i].qty;
+  }
+  return total;
 }
 
 function updateCartCount() {
-  const count = getCart().reduce((sum, i) => sum + i.qty, 0);
+  const cart = getCart();
+  let count = 0;
+  for (let i = 0; i < cart.length; i++) {
+    count += cart[i].qty;
+  }
   const el = document.getElementById('cart-count');
   if (el) el.textContent = count;
 }

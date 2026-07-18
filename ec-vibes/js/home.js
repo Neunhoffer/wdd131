@@ -6,17 +6,22 @@ fetch('./data/products.json')
     const featured = products.filter(p => p.featured);
     grid.innerHTML = featured.map(cardTemplate).join('');
 
-    grid.addEventListener('click', e => {
-      const btn = e.target.closest('.btn-sm');
-      const card = e.target.closest('.product-card');
-      if (btn && card) {
+    // add click events to each card now that they're on the page
+    const cards = grid.querySelectorAll('.product-card');
+    cards.forEach(card => {
+      const id = Number(card.dataset.id);
+      const product = featured.find(p => p.id === id);
+
+      const addBtn = card.querySelector('.btn-sm');
+      addBtn.addEventListener('click', e => {
         e.preventDefault();
-        const id = Number(card.dataset.id);
-        const product = products.find(p => p.id === id);
+        e.stopPropagation();
         addToCart(product, 'M');
         showToast(product.name + ' added to cart!');
-      } else if (card) {
-        window.location.href = 'product.html?id=' + card.dataset.id;
-      }
+      });
+
+      card.addEventListener('click', () => {
+        window.location.href = 'product.html?id=' + product.id;
+      });
     });
   });

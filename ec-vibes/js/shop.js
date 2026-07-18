@@ -18,9 +18,29 @@ function renderProducts() {
 
   if (filtered.length === 0) {
     grid.innerHTML = '<p class="no-results">No scrubs found. Try a different search or filter.</p>';
-  } else {
-    grid.innerHTML = filtered.map(cardTemplate).join('');
+    return;
   }
+
+  grid.innerHTML = filtered.map(cardTemplate).join('');
+
+  // add click events to each card now that they're on the page
+  const cards = grid.querySelectorAll('.product-card');
+  cards.forEach(card => {
+    const id = Number(card.dataset.id);
+    const product = filtered.find(p => p.id === id);
+
+    const addBtn = card.querySelector('.btn-sm');
+    addBtn.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      addToCart(product, 'M');
+      showToast(product.name + ' added to cart!');
+    });
+
+    card.addEventListener('click', () => {
+      window.location.href = 'product.html?id=' + product.id;
+    });
+  });
 }
 
 fetch('./data/products.json')
@@ -39,18 +59,4 @@ fetch('./data/products.json')
     });
 
     searchInput.addEventListener('input', renderProducts);
-
-    grid.addEventListener('click', e => {
-      const btn = e.target.closest('.btn-sm');
-      const card = e.target.closest('.product-card');
-      if (btn && card) {
-        e.preventDefault();
-        const id = Number(card.dataset.id);
-        const product = allProducts.find(p => p.id === id);
-        addToCart(product, 'M');
-        showToast(product.name + ' added to cart!');
-      } else if (card) {
-        window.location.href = 'product.html?id=' + card.dataset.id;
-      }
-    });
   });
